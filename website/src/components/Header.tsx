@@ -1,67 +1,109 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import MobileHeader from './MobileHeader';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import MobileHeader from "./MobileHeader";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  // Update the screen size on mount and on resize
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust this value as per your desired mobile screen size breakpoint
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Check initial screen size
-    window.addEventListener('resize', handleResize); // Listen for screen size changes
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <>
-      {/* Conditionally render Mobile Header for smaller screens */}
       {isMobile ? (
-        <MobileHeader /> // Show mobile header on smaller screens
+        <MobileHeader />
       ) : (
         <>
-          {/* Top nav bar for desktop */}
-          <div className="fixed top-0 left-0 w-full flex items-center justify-between px-10 py-6 text-red-500 z-50 bg-white">
-            {/* Empty div to take left space (for balancing) */}
-            <div className="w-24" />
+          <div className="fixed top-0 left-0 w-full z-50 bg-white">
+            <div className="flex items-center justify-between px-10 py-4 text-red-500">
+              <div className="w-24" />
+              <nav className="flex space-x-6 text-lg font-medium text-red-800 tracking-wide mx-auto justify-center">
+                <Link
+                  href="/"
+                  className="hover:text-red-700 transition-colors duration-200"
+                >
+                  home
+                </Link>
 
-            {/* Centered nav links */}
-            <nav className="flex flex-wrap space-x-6 text-lg font-medium tracking-wide mx-auto justify-center">
-              <Link href="/work" className="hover:text-gray-300 transition-colors duration-200">work</Link>
-              <Link href="/shop" className="hover:text-gray-300 transition-colors duration-200">shop</Link>
-              <Link href="/clients" className="hover:text-gray-300 transition-colors duration-200">clients</Link>
-              <Link href="/sound" className="hover:text-gray-300 transition-colors duration-200">sound</Link>
-              <Link href="/what-we-do" className="hover:text-gray-300 transition-colors duration-200">what we do</Link>
-              <Link href="/about" className="hover:text-gray-300 transition-colors duration-200">about</Link>
-              <Link href="/diaries" className="hover:text-gray-300 transition-colors duration-200">diaries</Link>
-              <Link href="/the-packing-list" className="hover:text-gray-300 transition-colors duration-200">the packing list</Link>
-              <Link href="/instagram" className="hover:text-gray-300 transition-colors duration-200">instagram</Link>
-              <Link href="/contact" className="hover:text-gray-300 transition-colors duration-200">contact</Link>
-            </nav>
+                {/* DROPS WITH STYLED DROPDOWN */}
+                <div
+                  className="relative group"
+                  onMouseEnter={() => setShowDropdown(true)}
+                  onMouseLeave={() => setShowDropdown(false)}
+                >
+                  <Link
+                    href="/im-just-a-girl"
+                    className="hover:text-red-700 transition-colors duration-200"
+                  >
+                    drops
+                  </Link>
 
-            {/* Right: Cart */}
-            <div className="w-24 flex justify-end">
-              <Link href="/cart" className="text-lg hover:text-gray-300 transition-colors duration-200">
-                cart (0)
-              </Link>
+                  {showDropdown && (
+                    <div className="absolute top-full left-0 w-48 bg-white text-red-800 text-base flex flex-col space-y-1 rounded-lg">
+                      <Link
+                        href="/im-just-a-girl"
+                        className="hover:text-red-700 transition-colors duration-200"
+                      >
+                        i'm just a girl
+                      </Link>
+                      <Link
+                        href="/love-notes"
+                        className="hover:text-red-700 transition-colors duration-200"
+                      >
+                        love notes
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                <Link
+                  href="/about"
+                  className="hover:text-red-700 transition-colors duration-200"
+                >
+                  about
+                </Link>
+                <Link
+                  href="/socials"
+                  className="hover:text-red-700 transition-colors duration-200"
+                >
+                  socials
+                </Link>
+                <Link
+                  href="/contact"
+                  className="hover:text-red-700 transition-colors duration-200"
+                >
+                  contact
+                </Link>
+              </nav>
+
+              <div className="w-24 text-red-800 flex justify-end">
+                <Link
+                  href="/cart"
+                  className="text-lg hover:text-red-700 transition-colors duration-200"
+                >
+                  cart (0)
+                </Link>
+              </div>
+            </div>
+
+            <div className="flex justify-center mt-8 pb-4 text-red-800">
+              <div className="text-2xl font-bold tracking-wide">
+                two twelve studio
+              </div>
             </div>
           </div>
 
-          {/* Below the nav: Centered logo */}
-          <div className="bg-white pt-[100px] pb-8 flex justify-center text-red-500">
-            <div className="text-2xl font-bold uppercase tracking-wide">
-              the con.cept
-            </div>
-          </div>
+          <div className="pt-20" />
         </>
       )}
     </>
