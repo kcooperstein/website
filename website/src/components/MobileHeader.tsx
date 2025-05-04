@@ -38,7 +38,7 @@ export default function MobileHeader() {
             <>
               <Link
                 href="/im-just-a-girl"
-                className="hover:text-red-700 transition-colors duration-200"
+                className="hover:text-red-700 transition-colors duration-200 mt-10"
               >
                 i'm just a girl
               </Link>
