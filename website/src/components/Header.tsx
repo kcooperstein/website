@@ -54,7 +54,7 @@ export default function Header() {
                         href="/im-just-a-girl"
                         className="hover:text-red-700 transition-colors duration-200"
                       >
-                        i'm just a girl
+                        {`i'm just a girl`}
                       </Link>
                       <Link
                         href="/love-notes"
