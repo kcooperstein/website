@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
+import InstagramFeed from "@/components/Instagram";
 
 export default function SocialsPage() {
   return (
@@ -10,10 +11,9 @@ export default function SocialsPage() {
         {/* Contact Info and Links */}
         <section className="max-w-4xl mx-auto text-center space-y-10">
           <div>
-            <h2 className="text-xl uppercase font-medium">Let’s connect</h2>
             <div className="flex justify-center gap-6 mt-4 text-red-700">
               <a
-                href="#"
+                href="https://www.instagram.com/2twelve.studio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
@@ -21,15 +21,15 @@ export default function SocialsPage() {
                 Instagram
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@2twelvestudio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
               >
-                LinkedIn
+                Tiktok
               </a>
               <a
-                href="#"
+                href="hhttps://x.com/2twelvestudio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
@@ -39,6 +39,7 @@ export default function SocialsPage() {
             </div>
           </div>
         </section>
+        <InstagramFeed />
       </main>
     </div>
   );

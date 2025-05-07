@@ -10,6 +10,9 @@ export default function ContactPage() {
     message: "",
   });
 
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -17,10 +20,33 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+
+    const form = e.target as HTMLFormElement;
+
+    // Send data to Formspree
+    try {
+      const res = await fetch("https://formspree.io/f/mdkgglvz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setSuccess(true);
+        setError(false);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setError(true);
+        setSuccess(false);
+      }
+    } catch (error) {
+      setError(true);
+      setSuccess(false);
+    }
   };
 
   return (
@@ -43,7 +69,7 @@ export default function ContactPage() {
               href="mailto:hello@theconceptny.com"
               className="text-sm sm:text-base text-red-600 underline hover:text-red-700"
             >
-              hello@emailhere.com
+              info@twotwelve.studio
             </a>
           </div>
 
@@ -103,6 +129,18 @@ export default function ContactPage() {
             >
               Send Love Note
             </button>
+
+            {/* Success and Error Messages */}
+            {success && (
+              <p className="text-green-600 text-center mt-4">
+                Thank you! Your love note was sent. 💌
+              </p>
+            )}
+            {error && (
+              <p className="text-red-600 text-center mt-4">
+                Oops, something went wrong. Please try again. 😕
+              </p>
+            )}
           </form>
         </section>
       </main>
