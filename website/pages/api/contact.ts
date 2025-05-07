@@ -19,7 +19,7 @@ export default async function handler(
 
   try {
     const data = await resend.emails.send({
-      from: email, // works by default
+      from: "Contact Form <onboarding@resend.dev>", // works by default
       // to: "info@twotwelve.studio",
       to: "leslyalc12@gmail.com",
       subject: `New message from ${name}`,
