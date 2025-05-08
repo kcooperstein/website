@@ -10,8 +10,8 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+  const [growlMessage, setGrowlMessage] = useState<string | null>(null);
+  const [growlType, setGrowlType] = useState<"success" | "error" | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,16 +36,16 @@ export default function ContactPage() {
       });
 
       if (res.ok) {
-        setSuccess(true);
-        setError(false);
+        setGrowlMessage("Thank you! Your love note was sent. 💌");
+        setGrowlType("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setError(true);
-        setSuccess(false);
+        setGrowlMessage("Oops, something went wrong. Please try again. 😕");
+        setGrowlType("error");
       }
     } catch (error) {
-      setError(true);
-      setSuccess(false);
+      setGrowlMessage("Oops, something went wrong. Please try again. 😕");
+      setGrowlType("error");
     }
   };
 
@@ -63,14 +63,27 @@ export default function ContactPage() {
             ears.
           </p>
 
-          {/* Email at the top */}
-          <div className="mb-8">
+          <div className="mb-8 flex flex-col items-center justify-center gap-4">
             <a
               href="mailto:hello@theconceptny.com"
               className="text-sm sm:text-base text-red-600 underline hover:text-red-700"
             >
               info@twotwelve.studio
             </a>
+
+            {/* Growl Notification */}
+            {growlMessage && (
+              <div
+                className={`growl-notification ${growlType} py-2 px-4 rounded-md`}
+                style={{
+                  backgroundColor:
+                    growlType === "success" ? "#28a745" : "#dc3545",
+                  color: "white",
+                }}
+              >
+                {growlMessage}
+              </div>
+            )}
           </div>
 
           {/* Contact Form */}
@@ -129,21 +142,26 @@ export default function ContactPage() {
             >
               Send Love Note
             </button>
-
-            {/* Success and Error Messages */}
-            {success && (
-              <p className="text-green-600 text-center mt-4">
-                Thank you! Your love note was sent. 💌
-              </p>
-            )}
-            {error && (
-              <p className="text-red-600 text-center mt-4">
-                Oops, something went wrong. Please try again. 😕
-              </p>
-            )}
           </form>
         </section>
       </main>
+
+      {/* Add Growl Animation CSS */}
+      <style jsx>{`
+        .growl-notification {
+          font-size: 16px;
+          text-align: center;
+          display: inline-block;
+        }
+
+        .growl-notification.success {
+          background-color: #28a745; /* Green for success */
+        }
+
+        .growl-notification.error {
+          background-color: #dc3545; /* Red for error */
+        }
+      `}</style>
     </>
   );
 }
