@@ -39,13 +39,28 @@ export default function ContactPage() {
         setGrowlMessage("Thank you! Your love note was sent. 💌");
         setGrowlType("success");
         setFormData({ name: "", email: "", message: "" });
+
+        // Set timeout to remove growl message after 5 seconds
+        setTimeout(() => {
+          setGrowlMessage(null); // Remove the growl message
+        }, 5000);
       } else {
         setGrowlMessage("Oops, something went wrong. Please try again. 😕");
         setGrowlType("error");
+
+        // Set timeout to remove growl message after 5 seconds
+        setTimeout(() => {
+          setGrowlMessage(null); // Remove the growl message
+        }, 5000);
       }
     } catch (error) {
       setGrowlMessage("Oops, something went wrong. Please try again. 😕");
       setGrowlType("error");
+
+      // Set timeout to remove growl message after 5 seconds
+      setTimeout(() => {
+        setGrowlMessage(null); // Remove the growl message
+      }, 5000);
     }
   };
 

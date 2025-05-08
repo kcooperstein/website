@@ -2,6 +2,7 @@
 
 import Header from "@/components/Header";
 import InstagramEmbed from "@/components/InstagramEmbed";
+import TwitterEmbed from "@/components/TwitterEmbed";
 
 export default function SocialsPage() {
   return (
@@ -39,7 +40,8 @@ export default function SocialsPage() {
             </div>
           </div>
         </section>
-        <InstagramEmbed />
+        {/* <InstagramEmbed /> */}
+        <TwitterEmbed />
       </main>
     </div>
   );
