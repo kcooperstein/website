@@ -1,7 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
-import InstagramFeed from "@/components/Instagram";
+import InstagramEmbed from "@/components/InstagramEmbed";
 
 export default function SocialsPage() {
   return (
@@ -39,7 +39,7 @@ export default function SocialsPage() {
             </div>
           </div>
         </section>
-        <InstagramFeed />
+        <InstagramEmbed />
       </main>
     </div>
   );
