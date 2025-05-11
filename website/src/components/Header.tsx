@@ -85,15 +85,6 @@ export default function Header() {
                   contact
                 </Link>
               </nav>
-
-              <div className="w-24 text-red-800 flex justify-end">
-                <Link
-                  href="/cart"
-                  className="text-lg hover:text-red-700 transition-colors duration-200"
-                >
-                  cart (0)
-                </Link>
-              </div>
             </div>
 
             <div className="flex justify-center mt-8 pb-4 text-red-800">

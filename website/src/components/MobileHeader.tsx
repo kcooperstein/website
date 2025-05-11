@@ -95,12 +95,6 @@ export default function MobileHeader() {
         +
       </button>
       <div className="text-lg font-bold tracking-wide">two twelve studio</div>
-      <Link
-        href="/cart"
-        className="text-lg font-bold hover:text-red-700 transition-colors duration-200"
-      >
-        cart (0)
-      </Link>
     </div>
   );
 }
