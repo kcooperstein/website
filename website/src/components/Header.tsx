@@ -42,7 +42,7 @@ export default function Header() {
                   onMouseLeave={() => setShowDropdown(false)}
                 >
                   <Link
-                    href="/im-just-a-girl"
+                    href="/drops"
                     className="hover:text-red-700 transition-colors duration-200"
                   >
                     drops
