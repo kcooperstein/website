@@ -6,8 +6,8 @@ import Header from "../../../components/Header";
 
 const options = { next: { revalidate: 60 } };
 
-export default async function DropPage({ params }: { params: { slug: string } }) {
-  const params2 = await params;
+export default async function DropPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const drop = await client.fetch<SanityDocument>(
     `*[_type == "drop" && slug.current == $slug][0]{
       title,
@@ -23,7 +23,7 @@ export default async function DropPage({ params }: { params: { slug: string } })
         }
       }
     }`,
-    { slug: params2.slug },
+    { slug: slug },
     options
   );
 
