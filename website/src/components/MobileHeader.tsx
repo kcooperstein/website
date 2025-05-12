@@ -37,13 +37,13 @@ export default function MobileHeader() {
           {showDropsMenu ? (
             <>
               <Link
-                href="/im-just-a-girl"
+                href="/drops/im-just-a-girl"
                 className="hover:text-red-700 transition-colors duration-200 mt-10"
               >
                 {`i'm just a girl`}
               </Link>
               <Link
-                href="/love-notes"
+                href="/drops/love-notes"
                 className="hover:text-red-700 transition-colors duration-200"
               >
                 love notes
