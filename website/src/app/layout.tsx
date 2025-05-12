@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${permanentMarker.variable} antialiased`}>
+      <body className={`${permanentMarker.variable} antialiased text-red-800 bg-white min-h-screen`}>
         {children}
       </body>
     </html>
