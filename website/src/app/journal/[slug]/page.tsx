@@ -7,8 +7,10 @@ const ENTRY_QUERY = `*[_type == "journal" && slug.current == $slug][0]`;
 
 const options = { next: { revalidate: 60 } };
 
-export default async function JournalEntry({ params }: { params: { slug: string } }) {
-  const entry = await client.fetch<SanityDocument>(ENTRY_QUERY, { slug: params.slug }, options);
+export default async function JournalEntry({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+
+  const entry = await client.fetch<SanityDocument>(ENTRY_QUERY, { slug: slug }, options);
 
   if (!entry) return (
     <main className="px-6 py-16 max-w-3xl mx-auto">
