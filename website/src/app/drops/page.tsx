@@ -22,7 +22,7 @@ export default async function DropsPage() {
                   <div className="relative h-64 w-full">
                     <Image
                       // src={drop.coverImage} to do: switch this to const
-                      src={drop.slug.current === 'im-just-a-girl' ? 'https://cdn.sanity.io/images/y61nakqn/production/f874705356f943c36c76c9b66028840db224950c-1080x1620.jpg' : 'https://cdn.sanity.io/images/y61nakqn/production/0a02351833ba138e2c6bed1225bde07fbb377eb3-600x600.webp'}
+                      src={drop.slug.current === 'im-just-a-girl' ? 'https://cdn.sanity.io/images/y61nakqn/production/f874705356f943c36c76c9b66028840db224950c-1080x1620.jpg' : 'https://cdn.sanity.io/images/y61nakqn/production/e5fe567401f5b8885e19550f034f38cc83e9346a-1080x1350.png'}
                       alt={drop.title}
                       layout="fill"
                       objectFit="cover"
