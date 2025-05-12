@@ -51,13 +51,13 @@ export default function Header() {
                   {showDropdown && (
                     <div className="absolute top-full left-0 w-48 bg-white text-red-800 text-base flex flex-col space-y-1 rounded-lg">
                       <Link
-                        href="/journal/im-just-a-girl"
+                        href="/drops/im-just-a-girl"
                         className="hover:text-red-700 transition-colors duration-200"
                       >
                         {`i'm just a girl`}
                       </Link>
                       <Link
-                        href="/love-notes"
+                        href="/drops/love-notes"
                         className="hover:text-red-700 transition-colors duration-200"
                       >
                         love notes
