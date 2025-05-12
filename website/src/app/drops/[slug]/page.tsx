@@ -55,7 +55,7 @@ export default async function DropPage({ params }: { params: Promise<{ slug: str
         // Text block (basic text rendering)
         if (block._type === 'block') {
           return (
-            <p key={i} className="text-gray-800 text-base leading-relaxed">
+            <p key={i} className="text-red-800 text-base leading-relaxed">
               {block.children.map((child: any, j: number) => (
                 <span key={j}>{child.text}</span>
               ))}
