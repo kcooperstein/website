@@ -7,6 +7,7 @@ import Header from "../../../components/Header";
 const options = { next: { revalidate: 60 } };
 
 export default async function DropPage({ params }: { params: { slug: string } }) {
+  const params2 = await params;
   const drop = await client.fetch<SanityDocument>(
     `*[_type == "drop" && slug.current == $slug][0]{
       title,
@@ -22,12 +23,12 @@ export default async function DropPage({ params }: { params: { slug: string } })
         }
       }
     }`,
-    { slug: params.slug },
+    { slug: params2.slug },
     options
   );
 
   if (!drop) return (
-     <main className="text-red-800 max-w-4xl mx-auto px-6 py-16 space-y-10">
+    <main className="text-red-800 max-w-4xl mx-auto px-6 py-16 space-y-10">
       <Header />
       <p className="text-red-800 text-center py-20">Drop not found.</p>
     </main>
