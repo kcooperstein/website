@@ -1,10 +1,13 @@
 
 import Image from 'next/image';
+import { type SanityDocument } from "next-sanity";
 import { client } from "../../../sanity/lib/client";
 import Header from "../../../components/Header";
 
+const options = { next: { revalidate: 60 } };
+
 export default async function DropPage({ params }: { params: { slug: string } }) {
-  const drop = await client.fetch(
+  const drop = await client.fetch<SanityDocument>(
     `*[_type == "drop" && slug.current == $slug][0]{
       title,
       intro,
@@ -19,7 +22,8 @@ export default async function DropPage({ params }: { params: { slug: string } })
         }
       }
     }`,
-    { slug: params.slug }
+    { slug: params.slug },
+    options
   );
 
   if (!drop) return (
