@@ -5,7 +5,7 @@ import { type SanityDocument } from "next-sanity";
 
 import { client } from "../../sanity/lib/client";
 
-export const JOURNAL_QUERY = `*[_type == "journal"] | order(publishedAt desc) {
+const JOURNAL_QUERY = `*[_type == "journal"] | order(publishedAt desc) {
   title,
   slug,
   publishedAt,
